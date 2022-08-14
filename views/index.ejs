@@ -12,13 +12,21 @@
     const invalid = '<%= invalid %>';
     const characters = '<%= characters %>';
 
+    const text = window.location.search.match(/(?:\?text=)(.*)(?:&.*)/)?.[1];
+
     document.addEventListener('DOMContentLoaded', function () {
+      const input = document.querySelector('input.form-control')
+
       if (invalid === 'true') {
-        document.querySelector('textarea.form-control').classList.add('is-invalid')
+        input.classList.add('is-invalid')
       }
 
       if (characters > 0) {
-        document.querySelector('textarea.form-control').classList.add('is-valid')
+        input.classList.add('is-valid')
+      }
+
+      if (text) {
+        input.value = text
       }
     });
   </script>
@@ -32,10 +40,11 @@
     <form action="/" method="get" class="needs-validation" novalidate>
       <div class="form-group">
         <label for="text" class="form-label">Type something to discover how many characters the text has</label>
-        <textarea class="form-control" id="text" name="text" rows="1"></textarea>
+        <input class="form-control" id="text" name="text" rows="1"></input>
         <div class="invalid-feedback">Text is required</div>
         <div class="valid-feedback">Your text has <%= characters %> characters</div>
       </div>
+      <input type="hidden" name="shouldValidate" value=true />
       <div class="justify-content-end d-flex mt-2">
         <button type="submit" class="btn btn-primary">Count</button>
       </div>
