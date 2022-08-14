@@ -2,11 +2,12 @@
   "name": "voxy-challenge",
   "version": "1.0.0",
   "description": "Coding challange to voxy.com",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "dev": "npx nodemon src/server.js",
     "start": "node src/server.js",
-    "test": "npx jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
   },
   "keywords": [
     "js",
