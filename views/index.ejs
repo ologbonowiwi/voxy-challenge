@@ -26,7 +26,8 @@
       }
 
       if (text) {
-        input.value = text
+        const decodedText = decodeURIComponent(text.replace(/\+/g, " "))
+        input.value = decodedText
       }
     });
   </script>
