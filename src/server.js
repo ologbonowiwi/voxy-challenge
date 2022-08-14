@@ -1,5 +1,5 @@
 import express from "express";
-import { buildOptions } from "./helpers.js";
+import { getOptions } from "./domain/getOptions.js";
 
 const app = express();
 
@@ -7,8 +7,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/*', (req, res) => {
-  console.log('req.query :>> ', req.query);
-  res.render('index', buildOptions({}));
+  res.render('index', getOptions(req.query));
 });
 
 app.listen(3000, () => {
