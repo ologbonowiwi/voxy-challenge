@@ -1,1 +1,1 @@
-export const countCharacters = characters => (characters || '').length
+export const countCharacters = characters => characters.length;
