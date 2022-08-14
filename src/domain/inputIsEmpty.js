@@ -1,0 +1,1 @@
+export const inputIsEmpty = characters => !characters || !characters.length
